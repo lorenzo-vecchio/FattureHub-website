@@ -12,8 +12,8 @@
 	let error = $state('');
 	let user = $state(getUser());
 	let credits = $state<{ balance: number; monthly_allowance: number; subscription_status: string } | null>(null);
-	let plans = $state<{ id: string; name: string; price: number; price_id: string; monthly_credits: number }[]>([]);
-	let topups = $state<{ id: string; name: string; price: number; price_id: string; credits: number }[]>([]);
+	let plans = $state<{ id: string; name: string; price_id: string; monthly_credits: number }[]>([]);
+	let topups = $state<{ id: string; name: string; price_id: string; credits: number }[]>([]);
 	let subscription = $state<{ status: string } | null>(null);
 	let checkoutLoading = $state(false);
 
@@ -205,11 +205,7 @@
 					{#each plans as plan}
 						<Card class={plan.id === 'plan_1' ? 'border-primary' : ''}>
 							<CardHeader class="pb-3">
-								<CardTitle class="text-base">{plan.name.split(' - ')[0]}</CardTitle>
-								<p class="text-2xl font-bold">
-									€{plan.price / 100}
-									<span class="text-sm font-normal text-muted-foreground">/mese</span>
-								</p>
+								<CardTitle class="text-base">{plan.name ?? `${plan.monthly_credits} crediti/mese`}</CardTitle>
 							</CardHeader>
 							<CardContent class="pb-3">
 								<p class="text-sm text-muted-foreground">{plan.monthly_credits} crediti AI/mese</p>
@@ -247,7 +243,6 @@
 						<Card>
 							<CardHeader class="pb-3">
 								<CardTitle class="text-base">{topup.credits} crediti</CardTitle>
-								<p class="text-2xl font-bold">€{topup.price / 100}</p>
 							</CardHeader>
 							<CardFooter>
 								<Button
