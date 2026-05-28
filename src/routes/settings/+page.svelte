@@ -238,7 +238,7 @@
 				<CardTitle>Scegli un piano</CardTitle>
 				<CardDescription>Crediti AI mensili + sync cloud</CardDescription>
 			</CardHeader>
-			<CardContent>
+			<CardContent class="pb-6">
 				<div class="grid gap-4 sm:grid-cols-3">
 					{#each plans as plan}
 						<Card class={plan.id === 'plan_1' ? 'border-primary' : ''}>
@@ -254,7 +254,7 @@
 							<CardContent class="pb-3">
 								<p class="text-sm text-muted-foreground">{plan.monthly_credits} crediti AI/mese</p>
 							</CardContent>
-							<CardFooter class="pb-6">
+							<CardFooter>
 								<Button
 									class="w-full"
 									variant={plan.id === 'plan_1' ? 'default' : 'outline'}
@@ -281,7 +281,7 @@
 				</CardTitle>
 				<CardDescription>Ricaricamento una tantum, non scadono mai</CardDescription>
 			</CardHeader>
-			<CardContent>
+			<CardContent class="pb-6">
 				<div class="grid gap-4 sm:grid-cols-3">
 					{#each topups as topup}
 						<Card>
@@ -291,7 +291,7 @@
 									<p class="text-2xl font-bold">€{topup.price / 100}</p>
 								{/if}
 							</CardHeader>
-							<CardFooter class="pb-6">
+							<CardFooter>
 								<Button
 									class="w-full"
 									variant="outline"
