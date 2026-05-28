@@ -254,7 +254,7 @@
 							<CardContent class="pb-3">
 								<p class="text-sm text-muted-foreground">{plan.monthly_credits} crediti AI/mese</p>
 							</CardContent>
-							<CardFooter>
+							<CardFooter class="pb-6">
 								<Button
 									class="w-full"
 									variant={plan.id === 'plan_1' ? 'default' : 'outline'}
@@ -291,7 +291,7 @@
 									<p class="text-2xl font-bold">€{topup.price / 100}</p>
 								{/if}
 							</CardHeader>
-							<CardFooter>
+							<CardFooter class="pb-6">
 								<Button
 									class="w-full"
 									variant="outline"
