@@ -12,6 +12,7 @@
 	let error = $state('');
 	let user = $state(getUser());
 	let credits = $state<{ balance: number; monthly_allowance: number; subscription_status: string } | null>(null);
+	let transactions = $state<{ id: string; amount: number; type: string; description: string; created_at: string }[]>([]);
 	let plans = $state<{ id: string; name: string; price_id: string; price: number; monthly_credits: number }[]>([]);
 	let topups = $state<{ id: string; name: string; price_id: string; price: number; credits: number }[]>([]);
 	let subscription = $state<{ status: string } | null>(null);
@@ -63,15 +64,17 @@
 		loading = true;
 		error = '';
 		try {
-			const [creditsData, plansData, subData] = await Promise.all([
+			const [creditsData, plansData, subData, txData] = await Promise.all([
 				apiFetch<any>('/api/credits'),
 				apiFetch<any>('/api/plans'),
 				apiFetch<any>('/api/stripe/subscription'),
+				apiFetch<any>('/api/credits/transactions'),
 			]);
 			credits = creditsData;
 			plans = plansData.plans || [];
 			topups = plansData.topups || [];
 			subscription = subData;
+			transactions = txData;
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Errore nel caricamento dei dati.';
 		} finally {
@@ -155,6 +158,41 @@
 				<p class="mt-1 text-sm text-muted-foreground">
 					+{credits?.monthly_allowance ?? 0} crediti/mese con il tuo abbonamento
 				</p>
+			{/if}
+		</CardContent>
+	</Card>
+
+	<!-- Transaction History -->
+	<Card class="mb-6">
+		<CardHeader>
+			<CardTitle class="flex items-center gap-2">
+				<Brain class="size-5" />
+				Storico crediti
+			</CardTitle>
+			<CardDescription>Utilizzo e ricariche dei crediti AI</CardDescription>
+		</CardHeader>
+		<CardContent>
+			{#if transactions.length === 0}
+				<p class="text-sm text-muted-foreground">Nessuna transazione.</p>
+			{:else}
+				<div class="space-y-2">
+					{#each transactions as tx}
+						<div class="flex items-center justify-between rounded-lg border p-3 text-sm">
+							<div class="flex-1">
+								<span class="font-medium">{tx.description || tx.type}</span>
+								<p class="text-xs text-muted-foreground">
+									{new Date(tx.created_at).toLocaleDateString('it-IT', {
+										day: '2-digit', month: 'short', year: 'numeric',
+										hour: '2-digit', minute: '2-digit'
+									})}
+								</p>
+							</div>
+							<span class="font-bold" class:text-green-600={tx.amount > 0} class:text-red-600={tx.amount < 0}>
+								{tx.amount > 0 ? '+' : ''}{tx.amount}
+							</span>
+						</div>
+					{/each}
+				</div>
 			{/if}
 		</CardContent>
 	</Card>
