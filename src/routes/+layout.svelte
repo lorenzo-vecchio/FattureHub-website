@@ -2,8 +2,27 @@
 	import '../app.d.ts';
 	import { ModeWatcher } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button';
+	import { isLoggedIn, logout as authLogout, getUser } from '$lib/auth';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
+
+	let loggedIn = $state(false);
+	let userName = $state('');
+
+	onMount(() => {
+		loggedIn = isLoggedIn();
+		const user = getUser();
+		if (user) userName = user.name;
+	});
+
+	function handleLogout() {
+		authLogout();
+		loggedIn = false;
+		userName = '';
+		goto('/');
+	}
 </script>
 
 <ModeWatcher />
@@ -15,12 +34,17 @@
 			<nav class="flex items-center gap-4">
 				<a href="/#features" class="text-sm text-muted-foreground hover:text-foreground">Funzionalità</a>
 				<a href="/#pricing" class="text-sm text-muted-foreground hover:text-foreground">Prezzi</a>
-				<a href="/login">
-					<Button variant="ghost" size="sm">Accedi</Button>
-				</a>
-				<a href="/register">
-					<Button size="sm">Registrati</Button>
-				</a>
+				{#if loggedIn}
+					<a href="/settings" class="text-sm text-muted-foreground hover:text-foreground">Il mio account</a>
+					<Button variant="ghost" size="sm" onclick={handleLogout}>Esci</Button>
+				{:else}
+					<a href="/login">
+						<Button variant="ghost" size="sm">Accedi</Button>
+					</a>
+					<a href="/register">
+						<Button size="sm">Registrati</Button>
+					</a>
+				{/if}
 			</nav>
 		</div>
 	</header>

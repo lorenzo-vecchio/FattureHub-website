@@ -32,7 +32,7 @@
 			localStorage.setItem('fatturehub_access_token', data.access_token);
 			localStorage.setItem('fatturehub_refresh_token', data.refresh_token);
 			localStorage.setItem('fatturehub_user', JSON.stringify(data.user));
-			goto('/');
+			goto('/settings');
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Errore di connessione.';
 		} finally {
