@@ -5,9 +5,10 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { apiFetch, isLoggedIn, logout as authLogout, getUser } from '$lib/auth';
 	import { onMount } from 'svelte';
-	import { Brain, CreditCard, LogOut, Sparkles, ExternalLink } from 'lucide-svelte';
+	import { Brain, CreditCard, LogOut, Sparkles, ExternalLink, Loader } from 'lucide-svelte';
 
 	let loading = $state(true);
+	let verifying = $state(false);
 	let error = $state('');
 	let user = $state(getUser());
 	let credits = $state<{ balance: number; monthly_allowance: number; subscription_status: string } | null>(null);
@@ -21,8 +22,42 @@
 			goto('/login');
 			return;
 		}
-		loadData();
+		const sessionId = typeof window !== 'undefined'
+		? new URL(window.location.href).searchParams.get('session_id')
+		: null;
+		if (sessionId) {
+			verifyPayment(sessionId);
+		} else {
+			loadData();
+		}
 	});
+
+	async function verifyPayment(sessionId: string) {
+		verifying = true;
+		error = '';
+		const maxAttempts = 10;
+		for (let i = 0; i < maxAttempts; i++) {
+			try {
+				const data = await apiFetch<{ status: string }>(`/api/stripe/verify-payment?session_id=${sessionId}`);
+				if (data.status === 'completed') {
+					await loadData();
+					verifying = false;
+					return;
+				}
+				if (i < maxAttempts - 1) {
+					await new Promise(r => setTimeout(r, 2000));
+				}
+			} catch {
+				if (i < maxAttempts - 1) {
+					await new Promise(r => setTimeout(r, 2000));
+				} else {
+					error = 'Il pagamento sembra non essere stato completato. Ricarica la pagina o contatta il supporto.';
+				}
+			}
+		}
+		verifying = false;
+		loadData();
+	}
 
 	async function loadData() {
 		loading = true;
@@ -91,7 +126,12 @@
 		</Button>
 	</div>
 
-	{#if loading}
+	{#if verifying}
+		<div class="py-12 text-center">
+			<Loader class="mx-auto mb-4 size-8 animate-spin text-muted-foreground" />
+			<p class="text-muted-foreground">Verifica del pagamento in corso...</p>
+		</div>
+	{:else if loading}
 		<div class="py-12 text-center text-muted-foreground">Caricamento...</div>
 	{:else if error}
 		<div class="mb-4 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</div>
