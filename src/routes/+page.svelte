@@ -206,10 +206,10 @@
 		</div>
 
 		<div class="mt-16 grid gap-8 lg:grid-cols-3">
-			<!-- Free -->
+			<!-- Gratis -->
 			<Card>
 				<CardHeader>
-					<CardTitle>Base</CardTitle>
+					<CardTitle>Gratis</CardTitle>
 					<CardDescription>Per uso occasionale</CardDescription>
 					<p class="mt-4">
 						<span class="text-3xl font-bold">Gratis</span>
@@ -225,6 +225,30 @@
 				<CardFooter>
 					<a href="https://github.com/lorenzo-vecchio/filtra-fatture" class="w-full">
 						<Button variant="outline" class="w-full">Scarica App</Button>
+					</a>
+				</CardFooter>
+			</Card>
+
+			<!-- Starter -->
+			<Card>
+				<CardHeader>
+					<CardTitle>Starter</CardTitle>
+					<CardDescription>Per iniziare</CardDescription>
+					<p class="mt-4">
+						<span class="text-3xl font-bold">€5</span>
+						<span class="text-muted-foreground">/mese</span>
+					</p>
+				</CardHeader>
+				<CardContent class="space-y-3">
+					<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
+					<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
+					<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>
+					<div class="flex items-center gap-2 text-sm"><Brain class="size-4 text-primary" /> 5 crediti AI/mese inclusi</div>
+					<div class="flex items-center gap-2 text-sm"><Cloud class="size-4 text-primary" /> Sync cloud illimitato</div>
+				</CardContent>
+				<CardFooter>
+					<a href="/register" class="w-full">
+						<Button variant="outline" class="w-full">Inizia</Button>
 					</a>
 				</CardFooter>
 			</Card>
@@ -246,7 +270,7 @@
 					<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
 					<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
 					<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>
-					<div class="flex items-center gap-2 text-sm"><Brain class="size-4 text-primary" /> AI backend incluso (15M token/mese)</div>
+					<div class="flex items-center gap-2 text-sm"><Brain class="size-4 text-primary" /> 15 crediti AI/mese inclusi</div>
 					<div class="flex items-center gap-2 text-sm"><Cloud class="size-4 text-primary" /> Sync cloud illimitato</div>
 					<div class="flex items-center gap-2 text-sm"><Shield class="size-4 text-primary" /> Backup file su cloud</div>
 				</CardContent>
@@ -271,7 +295,7 @@
 					<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
 					<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
 					<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>
-					<div class="flex items-center gap-2 text-sm"><Brain class="size-4 text-primary" /> AI backend incluso (50M token/mese)</div>
+					<div class="flex items-center gap-2 text-sm"><Brain class="size-4 text-primary" /> 50 crediti AI/mese inclusi</div>
 					<div class="flex items-center gap-2 text-sm"><Cloud class="size-4 text-primary" /> Sync cloud illimitato</div>
 					<div class="flex items-center gap-2 text-sm"><Shield class="size-4 text-primary" /> Backup file su cloud</div>
 				</CardContent>
@@ -286,7 +310,7 @@
 		<div class="mt-12 text-center">
 			<p class="text-sm text-muted-foreground">
 				Tutti i piani includono crediti AI consumabili. Crediti aggiuntivi disponibili come acquisti una tantum.
-				<br />L'AI è basata su modelli DeepSeek per il miglior rapporto qualità-prezzo.
+				<br />1 credito AI equivale a circa 1 milione di token (modificabile in futuro).
 			</p>
 		</div>
 	</div>
