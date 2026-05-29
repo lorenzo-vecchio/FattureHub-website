@@ -13,7 +13,7 @@
 	let user = $state(getUser());
 	let credits = $state<{ balance: number; monthly_allowance: number; subscription_status: string } | null>(null);
 	let transactions = $state<{ id: string; amount: number; type: string; description: string; created_at: string }[]>([]);
-	let plans = $state<{ id: string; name: string; price_id: string; price: number; monthly_credits: number }[]>([]);
+	let plans = $state<{ id: string; name: string; price_id: string; price: number; monthly_credits: number; file_backup: boolean }[]>([]);
 	let topups = $state<{ id: string; name: string; price_id: string; price: number; credits: number }[]>([]);
 	let subscription = $state<{ status: string } | null>(null);
 	let checkoutLoading = $state(false);
@@ -253,6 +253,9 @@
 							</CardHeader>
 							<CardContent class="pb-3">
 								<p class="text-sm text-muted-foreground">{plan.monthly_credits} crediti AI/mese</p>
+								{#if plan.file_backup}
+									<p class="mt-1 text-xs text-muted-foreground">✓ Backup file incluso</p>
+								{/if}
 							</CardContent>
 							<CardFooter>
 								<Button
