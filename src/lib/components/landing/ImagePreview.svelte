@@ -29,7 +29,7 @@
 		<Dialog.Trigger class="text-left w-full">
 			{@render children?.()}
 		</Dialog.Trigger>
-		<Dialog.Content class="max-w-3xl">
+		<Dialog.Content class="max-w-5xl w-[90vw]">
 			<Dialog.Header>
 				<Dialog.Title>{title}</Dialog.Title>
 				<Dialog.Description>{description}</Dialog.Description>
