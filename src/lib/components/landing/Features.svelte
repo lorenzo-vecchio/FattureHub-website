@@ -4,8 +4,10 @@
 	import PrivacyAnimation from './PrivacyAnimation.svelte';
 	import SyncAnimation from './SyncAnimation.svelte';
 
+	const images = import.meta.glob('/src/assets/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+
 	function image(base: string) {
-		return `/${base}-${mode.current}.png`;
+		return images[`/src/assets/${base}-${mode.current}.png`] ?? '';
 	}
 </script>
 
