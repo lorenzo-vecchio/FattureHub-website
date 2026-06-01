@@ -29,12 +29,12 @@
 		<Dialog.Trigger class="text-left w-full">
 			{@render children?.()}
 		</Dialog.Trigger>
-		<Dialog.Content class="max-w-5xl w-[90vw]">
+		<Dialog.Content class="w-[85vw] max-w-[85vw]">
 			<Dialog.Header>
 				<Dialog.Title>{title}</Dialog.Title>
 				<Dialog.Description>{description}</Dialog.Description>
 			</Dialog.Header>
-			<div class="aspect-video bg-card rounded-lg overflow-hidden">
+			<div class="w-[80vw] aspect-video bg-card rounded-lg overflow-hidden mx-auto">
 				<img src={src} alt={title} class="size-full object-contain" />
 			</div>
 		</Dialog.Content>
