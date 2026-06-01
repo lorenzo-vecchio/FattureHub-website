@@ -55,32 +55,18 @@
 			</line>
 		</g>
 
-		<!-- Data dots (server → device) -->
-		<circle r="2" class="text-primary/80" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M80,56 L42,38" />
+		<!-- Data dots (server ↔ device, ping-pong) -->
+		<circle r="2.5" class="text-primary" fill="currentColor">
+			<animateMotion dur="4s" repeatCount="indefinite" path="M80,56 L42,38 L80,56" />
 		</circle>
-		<circle r="2" class="text-primary/80" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M120,54 L155,36" begin="0.75s" />
+		<circle r="2.5" class="text-primary" fill="currentColor">
+			<animateMotion dur="4s" repeatCount="indefinite" path="M120,54 L155,36 L120,54" begin="2s" />
 		</circle>
-		<circle r="2" class="text-primary/80" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M84,78 L46,102" begin="1.5s" />
+		<circle r="2.5" class="text-primary" fill="currentColor">
+			<animateMotion dur="4s" repeatCount="indefinite" path="M84,78 L46,102 L84,78" begin="1s" />
 		</circle>
-		<circle r="2" class="text-primary/80" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M116,78 L157,105" begin="2.25s" />
-		</circle>
-
-		<!-- Data dots (device → server) -->
-		<circle r="2" class="text-accent" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M42,38 L80,56" begin="1.5s" />
-		</circle>
-		<circle r="2" class="text-accent" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M155,36 L120,54" begin="2.25s" />
-		</circle>
-		<circle r="2" class="text-accent" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M46,102 L84,78" begin="0.75s" />
-		</circle>
-		<circle r="2" class="text-accent" fill="currentColor">
-			<animateMotion dur="3s" repeatCount="indefinite" path="M157,105 L116,78" begin="0s" />
+		<circle r="2.5" class="text-primary" fill="currentColor">
+			<animateMotion dur="4s" repeatCount="indefinite" path="M116,78 L157,105 L116,78" begin="3s" />
 		</circle>
 	</svg>
 </div>
