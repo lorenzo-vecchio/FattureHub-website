@@ -20,7 +20,7 @@
 				<div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-bold">1</div>
 				<h3 class="mt-4 font-semibold">Carica le tue fatture</h3>
 				<p class="mt-2 text-sm text-muted-foreground">Trascina i file XML o P7M nell'app. Supportiamo import batch e ZIP.</p>
-				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+				<div class="mt-4 aspect-video rounded-lg bg-card flex items-center justify-center overflow-hidden">
 					<img src={image('how-upload')} alt="Upload fatture" class="size-full object-contain" />
 				</div>
 			</div>
@@ -29,7 +29,7 @@
 				<div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-bold">2</div>
 				<h3 class="mt-4 font-semibold">Analizza e filtra</h3>
 				<p class="mt-2 text-sm text-muted-foreground">Usa i filtri avanzati o l'AI per analizzare, riassumere e ottenere insight sulle tue fatture.</p>
-				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+				<div class="mt-4 aspect-video rounded-lg bg-card flex items-center justify-center overflow-hidden">
 					<img src={image('how-filters')} alt="Analisi e filtri" class="size-full object-contain" />
 				</div>
 			</div>
@@ -38,7 +38,7 @@
 				<div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-bold">3</div>
 				<h3 class="mt-4 font-semibold">Esporta e sincronizza</h3>
 				<p class="mt-2 text-sm text-muted-foreground">Esporta in DOCX, salva i progetti nel cloud e sincronizza su tutti i tuoi dispositivi.</p>
-				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+				<div class="mt-4 aspect-video rounded-lg bg-card flex items-center justify-center overflow-hidden">
 					<img src={image('AI-response')} alt="Esportazione e sync" class="size-full object-contain" />
 				</div>
 			</div>

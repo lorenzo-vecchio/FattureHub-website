@@ -20,7 +20,7 @@
 
 		<div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
 					<img src={image('how-upload')} alt="Schermata di upload fatture" class="size-full object-contain" />
 				</div>
 				<CardHeader>
@@ -30,7 +30,7 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
 					<img src={image('how-filters')} alt="Pannello dei filtri" class="size-full object-contain" />
 				</div>
 				<CardHeader>
@@ -40,7 +40,7 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
 					<img src={image('AI-response')} alt="Interfaccia assistente AI" class="size-full object-contain" />
 				</div>
 				<CardHeader>
@@ -50,7 +50,7 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
 					<img src={image('AI-thinking')} alt="Report generato dall'AI" class="size-full object-contain" />
 				</div>
 				<CardHeader>

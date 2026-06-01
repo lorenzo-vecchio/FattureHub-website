@@ -1,4 +1,4 @@
-<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
 	<svg viewBox="0 0 200 130" class="size-full p-3 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
 		<!-- Background clouds -->
 		<g class="text-muted-foreground/8" stroke-width="1.5">
