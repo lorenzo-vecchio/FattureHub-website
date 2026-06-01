@@ -26,40 +26,44 @@
 	let drawerOpen = $state(false);
 </script>
 
-<Dialog.Root bind:open={dialogOpen}>
-	<Dialog.Trigger class="text-left w-full max-sm:hidden">
-		{@render children?.()}
-	</Dialog.Trigger>
-	<Dialog.Content class="w-[90vw] max-sm:hidden">
-		<Dialog.Header>
-			<Dialog.Title>{title}</Dialog.Title>
-			<Dialog.Description>{description}</Dialog.Description>
-		</Dialog.Header>
-		<div class="w-full aspect-video bg-card rounded-lg overflow-hidden">
-			{#if preview}
-				{@render preview()}
-			{:else}
-				<img src={src} alt={title} class="size-full object-contain" />
-			{/if}
-		</div>
-	</Dialog.Content>
-</Dialog.Root>
+<div class="contents max-sm:hidden">
+	<Dialog.Root bind:open={dialogOpen}>
+		<button type="button" onclick={() => dialogOpen = true} class="text-left w-full cursor-pointer">
+			{@render children?.()}
+		</button>
+		<Dialog.Content class="w-[90vw]">
+			<Dialog.Header>
+				<Dialog.Title>{title}</Dialog.Title>
+				<Dialog.Description>{description}</Dialog.Description>
+			</Dialog.Header>
+			<div class="w-full aspect-video bg-card rounded-lg overflow-hidden">
+				{#if preview}
+					{@render preview()}
+				{:else}
+					<img src={src} alt={title} class="size-full object-contain" />
+				{/if}
+			</div>
+		</Dialog.Content>
+	</Dialog.Root>
+</div>
 
-<Drawer.Root bind:open={drawerOpen}>
-	<Drawer.Trigger class="text-left w-full sm:hidden">
-		{@render children?.()}
-	</Drawer.Trigger>
-	<Drawer.Content class="sm:hidden">
-		<Drawer.Header>
-			<Drawer.Title>{title}</Drawer.Title>
-			<Drawer.Description>{description}</Drawer.Description>
-		</Drawer.Header>
-		<div class="w-full aspect-video bg-card rounded-lg overflow-hidden px-4">
-			{#if preview}
-				{@render preview()}
-			{:else}
-				<img src={src} alt={title} class="size-full object-contain" />
-			{/if}
-		</div>
-	</Drawer.Content>
-</Drawer.Root>
+<div class="contents sm:hidden">
+	<Drawer.Root bind:open={drawerOpen}>
+		<button type="button" onclick={() => drawerOpen = true} class="text-left w-full cursor-pointer">
+			{@render children?.()}
+		</button>
+		<Drawer.Content>
+			<Drawer.Header>
+				<Drawer.Title>{title}</Drawer.Title>
+				<Drawer.Description>{description}</Drawer.Description>
+			</Drawer.Header>
+			<div class="w-full aspect-video bg-card rounded-lg overflow-hidden px-4">
+				{#if preview}
+					{@render preview()}
+				{:else}
+					<img src={src} alt={title} class="size-full object-contain" />
+				{/if}
+			</div>
+		</Drawer.Content>
+	</Drawer.Root>
+</div>
