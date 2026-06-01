@@ -1,13 +1,12 @@
 <script lang="ts">
-	import { mode } from 'mode-watcher';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import LottieAnimation from './LottieAnimation.svelte';
 	import SyncAnimationSimple from './SyncAnimationSimple.svelte';
 
 	const images = import.meta.glob('/src/assets/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
 
-	function image(base: string) {
-		return images[`/src/assets/${base}-${mode.current}.png`] ?? '';
+	function imgSrc(base: string, variant: 'light' | 'dark') {
+		return images[`/src/assets/${base}-${variant}.png`] ?? '';
 	}
 </script>
 
@@ -21,7 +20,8 @@
 		<div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			<Card class="overflow-hidden">
 				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={image('how-upload')} alt="Schermata di upload fatture" class="size-full object-contain" />
+					<img src={imgSrc('how-upload', 'light')} alt="Schermata di upload fatture" class="size-full object-contain dark:hidden" />
+					<img src={imgSrc('how-upload', 'dark')} alt="Schermata di upload fatture" class="size-full object-contain hidden dark:block" />
 				</div>
 				<CardHeader>
 					<CardTitle>Importazione Veloce</CardTitle>
@@ -31,7 +31,8 @@
 
 			<Card class="overflow-hidden">
 				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={image('how-filters')} alt="Pannello dei filtri" class="size-full object-contain" />
+					<img src={imgSrc('how-filters', 'light')} alt="Pannello dei filtri" class="size-full object-contain dark:hidden" />
+					<img src={imgSrc('how-filters', 'dark')} alt="Pannello dei filtri" class="size-full object-contain hidden dark:block" />
 				</div>
 				<CardHeader>
 					<CardTitle>Filtri Avanzati</CardTitle>
@@ -41,7 +42,8 @@
 
 			<Card class="overflow-hidden">
 				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={image('AI-response')} alt="Interfaccia assistente AI" class="size-full object-contain" />
+					<img src={imgSrc('AI-response', 'light')} alt="Interfaccia assistente AI" class="size-full object-contain dark:hidden" />
+					<img src={imgSrc('AI-response', 'dark')} alt="Interfaccia assistente AI" class="size-full object-contain hidden dark:block" />
 				</div>
 				<CardHeader>
 					<CardTitle>Analisi AI</CardTitle>
@@ -51,7 +53,8 @@
 
 			<Card class="overflow-hidden">
 				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={image('AI-thinking')} alt="Report generato dall'AI" class="size-full object-contain" />
+					<img src={imgSrc('AI-thinking', 'light')} alt="Report generato dall'AI" class="size-full object-contain dark:hidden" />
+					<img src={imgSrc('AI-thinking', 'dark')} alt="Report generato dall'AI" class="size-full object-contain hidden dark:block" />
 				</div>
 				<CardHeader>
 					<CardTitle>Report Automatici</CardTitle>
