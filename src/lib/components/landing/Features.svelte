@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
+	import { Card, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import LottieAnimation from './LottieAnimation.svelte';
 	import SyncAnimationSimple from './SyncAnimationSimple.svelte';
+	import FeatureCard from './FeatureCard.svelte';
+	import ImagePreview from './ImagePreview.svelte';
 
 	const images = import.meta.glob('/src/assets/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
 
@@ -18,64 +20,62 @@
 		</div>
 
 		<div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-			<Card class="overflow-hidden">
-				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={imgSrc('how-upload', 'light')} alt="Schermata di upload fatture" class="size-full object-contain dark:hidden" />
-					<img src={imgSrc('how-upload', 'dark')} alt="Schermata di upload fatture" class="size-full object-contain hidden dark:block" />
-				</div>
-				<CardHeader>
-					<CardTitle>Importazione Veloce</CardTitle>
-					<CardDescription>Trascina e rilascia file XML/P7M. Supporto batch per importare centinaia di fatture in pochi secondi.</CardDescription>
-				</CardHeader>
+			<FeatureCard
+				title="Importazione Veloce"
+				description="Trascina e rilascia file XML/P7M. Supporto batch per importare centinaia di fatture in pochi secondi."
+				imageLight={imgSrc('how-upload', 'light')}
+				imageDark={imgSrc('how-upload', 'dark')}
+			/>
+
+			<FeatureCard
+				title="Filtri Avanzati"
+				description="Filtra per data, importo, fornitore, cliente, tipo documento e molto altro. Risultati in tempo reale."
+				imageLight={imgSrc('how-filters', 'light')}
+				imageDark={imgSrc('how-filters', 'dark')}
+			/>
+
+			<FeatureCard
+				title="Analisi AI"
+				description="Fai domande sulle tue fatture in linguaggio naturale. Usa OpenAI, Claude, DeepSeek o il tuo provider preferito."
+				imageLight={imgSrc('AI-response', 'light')}
+				imageDark={imgSrc('AI-response', 'dark')}
+			/>
+
+			<FeatureCard
+				title="Report Automatici"
+				description="Genera report dettagliati con un click. Riepiloghi, analisi di spesa, confronti e statistiche."
+				imageLight={imgSrc('AI-thinking', 'light')}
+				imageDark={imgSrc('AI-thinking', 'dark')}
+			/>
+
+			<Card class="overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group cursor-pointer">
+				<ImagePreview
+					imageLight=""
+					imageDark=""
+					title="Sync Multi-dispositivo"
+					description="I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi."
+				>
+					<SyncAnimationSimple />
+					<CardHeader>
+						<CardTitle>Sync Multi-dispositivo</CardTitle>
+						<CardDescription>I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi.</CardDescription>
+					</CardHeader>
+				</ImagePreview>
 			</Card>
 
-			<Card class="overflow-hidden">
-				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={imgSrc('how-filters', 'light')} alt="Pannello dei filtri" class="size-full object-contain dark:hidden" />
-					<img src={imgSrc('how-filters', 'dark')} alt="Pannello dei filtri" class="size-full object-contain hidden dark:block" />
-				</div>
-				<CardHeader>
-					<CardTitle>Filtri Avanzati</CardTitle>
-					<CardDescription>Filtra per data, importo, fornitore, cliente, tipo documento e molto altro. Risultati in tempo reale.</CardDescription>
-				</CardHeader>
-			</Card>
-
-			<Card class="overflow-hidden">
-				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={imgSrc('AI-response', 'light')} alt="Interfaccia assistente AI" class="size-full object-contain dark:hidden" />
-					<img src={imgSrc('AI-response', 'dark')} alt="Interfaccia assistente AI" class="size-full object-contain hidden dark:block" />
-				</div>
-				<CardHeader>
-					<CardTitle>Analisi AI</CardTitle>
-					<CardDescription>Fai domande sulle tue fatture in linguaggio naturale. Usa OpenAI, Claude, DeepSeek o il tuo provider preferito.</CardDescription>
-				</CardHeader>
-			</Card>
-
-			<Card class="overflow-hidden">
-				<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
-					<img src={imgSrc('AI-thinking', 'light')} alt="Report generato dall'AI" class="size-full object-contain dark:hidden" />
-					<img src={imgSrc('AI-thinking', 'dark')} alt="Report generato dall'AI" class="size-full object-contain hidden dark:block" />
-				</div>
-				<CardHeader>
-					<CardTitle>Report Automatici</CardTitle>
-					<CardDescription>Genera report dettagliati con un click. Riepiloghi, analisi di spesa, confronti e statistiche.</CardDescription>
-				</CardHeader>
-			</Card>
-
-			<Card class="overflow-hidden">
-				<SyncAnimationSimple />
-				<CardHeader>
-					<CardTitle>Sync Multi-dispositivo</CardTitle>
-					<CardDescription>I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi.</CardDescription>
-				</CardHeader>
-			</Card>
-
-			<Card class="overflow-hidden">
-				<LottieAnimation />
-				<CardHeader>
-					<CardTitle>Privacy First</CardTitle>
-					<CardDescription>I tuoi dati sono criptati e rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
-				</CardHeader>
+			<Card class="overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group cursor-pointer">
+				<ImagePreview
+					imageLight=""
+					imageDark=""
+					title="Privacy First"
+					description="I tuoi dati sono criptati e rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile."
+				>
+					<LottieAnimation />
+					<CardHeader>
+						<CardTitle>Privacy First</CardTitle>
+						<CardDescription>I tuoi dati sono criptati e rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
+					</CardHeader>
+				</ImagePreview>
 			</Card>
 		</div>
 	</div>

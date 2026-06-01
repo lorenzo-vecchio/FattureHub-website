@@ -46,7 +46,7 @@
 		</g>
 
 		<!-- Connection lines from server to devices -->
-		<g>
+		<g stroke-width="1">
 			<line x1="80" y1="56" x2="42" y2="38" class="text-primary/30" stroke-dasharray="3 3">
 				<animate attributeName="stroke-dashoffset" from="0" to="12" dur="1.2s" repeatCount="indefinite" />
 			</line>

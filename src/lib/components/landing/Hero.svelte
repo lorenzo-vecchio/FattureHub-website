@@ -5,10 +5,23 @@
 </script>
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden border-b">
+	<!-- Background -->
 	<div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"></div>
-	<div class="mx-auto max-w-7xl px-6 py-24">
+
+	<!-- Decorative gradient orbs -->
+	<div class="absolute top-20 left-10 size-64 rounded-full bg-primary/5 blur-3xl"></div>
+	<div class="absolute bottom-20 right-10 size-80 rounded-full bg-primary/10 blur-3xl"></div>
+	<div class="absolute top-1/2 right-1/4 size-40 rounded-full bg-primary/5 blur-2xl"></div>
+
+	<!-- Floating decorative dots -->
+	<div class="absolute top-1/4 right-1/3 size-2 rounded-full bg-primary/20 animate-pulse" style="animation-duration: 3s;"></div>
+	<div class="absolute bottom-1/3 left-1/4 size-1.5 rounded-full bg-primary/20 animate-pulse" style="animation-duration: 4s; animation-delay: 1s;"></div>
+	<div class="absolute top-1/3 left-1/3 size-1 rounded-full bg-primary/30 animate-pulse" style="animation-duration: 2.5s; animation-delay: 0.5s;"></div>
+	<div class="absolute bottom-1/4 right-1/4 size-2.5 rounded-full bg-primary/15 animate-pulse" style="animation-duration: 3.5s; animation-delay: 2s;"></div>
+
+	<div class="mx-auto max-w-7xl px-6 py-24 relative">
 		<div class="mx-auto max-w-3xl text-center">
-			<Badge variant="outline" class="mb-4">Open Source · Privacy First</Badge>
+			<Badge variant="default" class="mb-6 px-4 py-1.5 text-sm tracking-wide shadow-sm">Open Source · Privacy First</Badge>
 			<h1 class="text-4xl font-bold tracking-tight sm:text-6xl">
 				Le tue fatture,
 				<span class="text-primary">più intelligenti</span>
