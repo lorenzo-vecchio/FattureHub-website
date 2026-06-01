@@ -71,7 +71,7 @@
 				<LottieAnimation />
 				<CardHeader>
 					<CardTitle>Privacy First</CardTitle>
-					<CardDescription>I tuoi dati rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
+					<CardDescription>I tuoi dati sono criptati e rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
 				</CardHeader>
 			</Card>
 		</div>
