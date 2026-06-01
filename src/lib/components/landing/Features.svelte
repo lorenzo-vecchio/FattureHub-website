@@ -27,7 +27,7 @@
 			<p class="mt-2 text-muted-foreground">Un unico posto per gestire tutte le tue fatture.</p>
 		</div>
 
-		<div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+		<div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			<FeatureCard
 				title="Importazione Veloce"
 				description="Trascina e rilascia file XML/P7M. Supporto batch per importare centinaia di fatture in pochi secondi."

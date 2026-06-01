@@ -15,7 +15,7 @@
 			<p class="mt-2 text-muted-foreground">In tre semplici passi.</p>
 		</div>
 
-		<div class="mt-16 grid gap-8 md:grid-cols-3">
+		<div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
 			<HowItWorksCard
 				step={1}
 				title="Carica le tue fatture"
