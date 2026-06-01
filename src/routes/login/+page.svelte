@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button';
+	import { saveAuth } from '$lib/auth';
 
 	const BACKEND_URL = 'http://localhost:8080';
 
@@ -29,9 +30,7 @@
 			}
 
 			const data = await res.json();
-			localStorage.setItem('fatturehub_access_token', data.access_token);
-			localStorage.setItem('fatturehub_refresh_token', data.refresh_token);
-			localStorage.setItem('fatturehub_user', JSON.stringify(data.user));
+			saveAuth(data);
 			goto('/settings');
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Errore di connessione.';

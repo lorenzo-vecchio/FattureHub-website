@@ -49,6 +49,7 @@
 					await new Promise(r => setTimeout(r, 2000));
 				}
 			} catch {
+				if (redirectIfUnauthenticated()) return;
 				if (i < maxAttempts - 1) {
 					await new Promise(r => setTimeout(r, 2000));
 				} else {
@@ -76,6 +77,7 @@
 			subscription = subData;
 			transactions = txData;
 		} catch (e) {
+			if (redirectIfUnauthenticated()) return;
 			error = e instanceof Error ? e.message : 'Errore nel caricamento dei dati.';
 		} finally {
 			loading = false;
@@ -92,6 +94,7 @@
 			});
 			window.location.href = data.url;
 		} catch (e) {
+			if (redirectIfUnauthenticated()) return;
 			error = e instanceof Error ? e.message : 'Errore durante la creazione del checkout.';
 		} finally {
 			checkoutLoading = false;
@@ -103,8 +106,17 @@
 			const data = await apiFetch<{ url: string }>('/api/stripe/portal');
 			window.location.href = data.url;
 		} catch (e) {
+			if (redirectIfUnauthenticated()) return;
 			error = e instanceof Error ? e.message : 'Errore.';
 		}
+	}
+
+	function redirectIfUnauthenticated() {
+		if (!isLoggedIn()) {
+			goto('/login');
+			return true;
+		}
+		return false;
 	}
 
 	function handleLogout() {

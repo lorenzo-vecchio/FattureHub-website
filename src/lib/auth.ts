@@ -1,8 +1,28 @@
 const BACKEND_URL = 'http://localhost:8080';
 
+function dispatchAuthChange() {
+	if (typeof window !== 'undefined') {
+		window.dispatchEvent(new CustomEvent('authchange'));
+	}
+}
+
+function isTokenExpired(): boolean {
+	const token = localStorage.getItem('fatturehub_access_token');
+	if (!token) return true;
+	try {
+		const base64Url = token.split('.')[1];
+		const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+		const payload = JSON.parse(atob(base64));
+		return payload.exp * 1000 < Date.now();
+	} catch {
+		return true;
+	}
+}
+
 export function isLoggedIn(): boolean {
 	if (typeof window === 'undefined') return false;
-	return !!localStorage.getItem('fatturehub_access_token');
+	const token = localStorage.getItem('fatturehub_access_token');
+	return !!token && !isTokenExpired();
 }
 
 export function getUser(): { id: string; email: string; name: string; verified: boolean } | null {
@@ -16,10 +36,18 @@ export function getUser(): { id: string; email: string; name: string; verified: 
 	}
 }
 
+export function saveAuth(data: { access_token: string; refresh_token: string; user: { id: string; email: string; name: string; verified: boolean } }) {
+	localStorage.setItem('fatturehub_access_token', data.access_token);
+	localStorage.setItem('fatturehub_refresh_token', data.refresh_token);
+	localStorage.setItem('fatturehub_user', JSON.stringify(data.user));
+	dispatchAuthChange();
+}
+
 export function logout() {
 	localStorage.removeItem('fatturehub_access_token');
 	localStorage.removeItem('fatturehub_refresh_token');
 	localStorage.removeItem('fatturehub_user');
+	dispatchAuthChange();
 }
 
 function getToken(): string | null {
@@ -41,14 +69,19 @@ async function refreshToken(): Promise<boolean> {
 			return false;
 		}
 		const data = await res.json();
-		localStorage.setItem('fatturehub_access_token', data.access_token);
-		localStorage.setItem('fatturehub_refresh_token', data.refresh_token);
-		localStorage.setItem('fatturehub_user', JSON.stringify(data.user));
+		saveAuth(data);
 		return true;
 	} catch {
 		logout();
 		return false;
 	}
+}
+
+export async function tryRefreshAuth(): Promise<boolean> {
+	if (typeof window === 'undefined') return false;
+	if (!localStorage.getItem('fatturehub_access_token')) return false;
+	if (!isTokenExpired()) return true;
+	return refreshToken();
 }
 
 export async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {

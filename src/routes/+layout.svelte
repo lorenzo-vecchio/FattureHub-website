@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ModeWatcher } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button';
-	import { isLoggedIn, logout as authLogout, getUser } from '$lib/auth';
+	import { isLoggedIn, logout as authLogout, getUser, tryRefreshAuth } from '$lib/auth';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
@@ -11,15 +11,24 @@
 	let userName = $state('');
 
 	onMount(() => {
+		initAuth();
+		window.addEventListener('authchange', updateAuth);
+		return () => window.removeEventListener('authchange', updateAuth);
+	});
+
+	async function initAuth() {
+		await tryRefreshAuth();
+		updateAuth();
+	}
+
+	function updateAuth() {
 		loggedIn = isLoggedIn();
 		const user = getUser();
-		if (user) userName = user.name;
-	});
+		userName = user?.name ?? '';
+	}
 
 	function handleLogout() {
 		authLogout();
-		loggedIn = false;
-		userName = '';
 		goto('/');
 	}
 </script>
