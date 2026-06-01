@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { mode } from 'mode-watcher';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import PrivacyAnimation from './PrivacyAnimation.svelte';
-	import SyncAnimation from './SyncAnimation.svelte';
+	import LottieAnimation from './LottieAnimation.svelte';
+	import SyncAnimationSimple from './SyncAnimationSimple.svelte';
 
 	const images = import.meta.glob('/src/assets/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
 
@@ -60,7 +60,7 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<SyncAnimation />
+				<SyncAnimationSimple />
 				<CardHeader>
 					<CardTitle>Sync Multi-dispositivo</CardTitle>
 					<CardDescription>I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi.</CardDescription>
@@ -68,7 +68,7 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<PrivacyAnimation />
+				<LottieAnimation />
 				<CardHeader>
 					<CardTitle>Privacy Prima</CardTitle>
 					<CardDescription>I tuoi dati rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
