@@ -1,5 +1,4 @@
 <script lang="ts">
-	import '../app.d.ts';
 	import { ModeWatcher } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button';
 	import { isLoggedIn, logout as authLogout, getUser } from '$lib/auth';

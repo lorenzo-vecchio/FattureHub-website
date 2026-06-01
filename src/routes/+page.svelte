@@ -205,7 +205,7 @@
 			<p class="mt-2 text-muted-foreground">Scegli il piano che fa per te. L'app base è gratuita e open source.</p>
 		</div>
 
-		<div class="mt-16 grid gap-8 lg:grid-cols-3">
+		<div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 			<!-- Gratis -->
 			<Card>
 				<CardHeader>
