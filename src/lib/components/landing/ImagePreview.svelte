@@ -29,12 +29,12 @@
 		<Dialog.Trigger class="text-left w-full">
 			{@render children?.()}
 		</Dialog.Trigger>
-		<Dialog.Content class="w-[85vw] max-w-[85vw]">
+		<Dialog.Content class="w-[90vw]">
 			<Dialog.Header>
 				<Dialog.Title>{title}</Dialog.Title>
 				<Dialog.Description>{description}</Dialog.Description>
 			</Dialog.Header>
-			<div class="w-[80vw] aspect-video bg-card rounded-lg overflow-hidden mx-auto">
+			<div class="w-full aspect-video bg-card rounded-lg overflow-hidden">
 				<img src={src} alt={title} class="size-full object-contain" />
 			</div>
 		</Dialog.Content>
@@ -52,7 +52,7 @@
 				<Drawer.Title>{title}</Drawer.Title>
 				<Drawer.Description>{description}</Drawer.Description>
 			</Drawer.Header>
-			<div class="aspect-video bg-card rounded-lg overflow-hidden mx-4">
+			<div class="w-full aspect-video bg-card rounded-lg overflow-hidden px-4">
 				<img src={src} alt={title} class="size-full object-contain" />
 			</div>
 		</Drawer.Content>
