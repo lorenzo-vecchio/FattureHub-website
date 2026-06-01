@@ -5,7 +5,6 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { Sun, Moon, Menu } from 'lucide-svelte';
-	import * as Sheet from '$lib/components/ui/sheet';
 
 	let { children } = $props();
 
@@ -72,45 +71,42 @@
 		</div>
 	</header>
 
-	<!-- Mobile menu sheet -->
-	<Sheet.Root bind:open={menuOpen}>
-		<Sheet.Content side="top" class="h-dvh w-dvw border-0">
-			<Sheet.Close class="absolute top-4 right-4" />
-			<div class="flex flex-col items-center justify-center gap-6 h-full px-6 pb-16">
-				<div class="flex flex-col items-center gap-6">
-					<a href="/#features" onclick={() => menuOpen = false} class="text-xl font-medium text-foreground hover:text-primary">Funzionalità</a>
-					<a href="/#pricing" onclick={() => menuOpen = false} class="text-xl font-medium text-foreground hover:text-primary">Prezzi</a>
-				</div>
+	<!-- Mobile menu overlay -->
+	{#if menuOpen}
+		<div class="fixed inset-0 z-50 bg-background flex flex-col items-center justify-center sm:hidden" role="dialog" aria-modal="true">
+			<button type="button" onclick={() => menuOpen = false} class="absolute top-4 right-4 p-2 text-muted-foreground">
+				<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+			</button>
 
-				<div class="flex flex-col items-center gap-4 mt-auto">
-					<button type="button" onclick={() => { toggleMode(); }} class="flex items-center gap-3 text-base text-muted-foreground">
-						{#if mode.current === 'dark'}
-							<Sun class="size-4" />
-							Modalità chiara
-						{:else}
-							<Moon class="size-4" />
-							Modalità scura
-						{/if}
-					</button>
-					{#if loggedIn}
-						<div class="flex flex-col items-center gap-3">
-							<a href="/settings" onclick={() => menuOpen = false} class="text-base text-muted-foreground hover:text-foreground">Il mio account</a>
-							<Button variant="outline" onclick={handleLogout}>Esci</Button>
-						</div>
-					{:else}
-						<div class="flex flex-col items-center gap-3">
-							<a href="/login" onclick={() => menuOpen = false}>
-								<Button variant="outline" class="w-40">Accedi</Button>
-							</a>
-							<a href="/register" onclick={() => menuOpen = false}>
-								<Button class="w-40">Registrati</Button>
-							</a>
-						</div>
-					{/if}
-				</div>
+			<div class="flex flex-col items-center gap-8">
+				<a href="/#features" onclick={() => menuOpen = false} class="text-2xl font-medium text-foreground hover:text-primary">Funzionalità</a>
+				<a href="/#pricing" onclick={() => menuOpen = false} class="text-2xl font-medium text-foreground hover:text-primary">Prezzi</a>
 			</div>
-		</Sheet.Content>
-	</Sheet.Root>
+
+			<div class="flex flex-col items-center gap-4 absolute bottom-12">
+				<button type="button" onclick={toggleMode} class="flex items-center gap-3 text-base text-muted-foreground">
+					{#if mode.current === 'dark'}
+						<Sun class="size-4" />
+						Modalità chiara
+					{:else}
+						<Moon class="size-4" />
+						Modalità scura
+					{/if}
+				</button>
+				{#if loggedIn}
+					<a href="/settings" onclick={() => menuOpen = false} class="text-base text-muted-foreground hover:text-foreground">Il mio account</a>
+					<Button variant="outline" onclick={handleLogout}>Esci</Button>
+				{:else}
+					<a href="/login" onclick={() => menuOpen = false}>
+						<Button variant="outline" class="w-40">Accedi</Button>
+					</a>
+					<a href="/register" onclick={() => menuOpen = false}>
+						<Button class="w-40">Registrati</Button>
+					</a>
+				{/if}
+			</div>
+		</div>
+	{/if}
 
 	<main class="flex-1">
 		{@render children()}
