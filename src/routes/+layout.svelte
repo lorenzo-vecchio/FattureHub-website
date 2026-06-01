@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { ModeWatcher } from 'mode-watcher';
+	import { ModeWatcher, toggleMode, mode } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button';
 	import { isLoggedIn, logout as authLogout, getUser, tryRefreshAuth } from '$lib/auth';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { Sun, Moon } from 'lucide-svelte';
 
 	let { children } = $props();
 
@@ -42,6 +43,13 @@
 			<nav class="flex items-center gap-4">
 				<a href="/#features" class="text-sm text-muted-foreground hover:text-foreground">Funzionalità</a>
 				<a href="/#pricing" class="text-sm text-muted-foreground hover:text-foreground">Prezzi</a>
+				<Button variant="ghost" size="icon-sm" onclick={toggleMode} class="text-muted-foreground">
+					{#if mode.current === 'dark'}
+						<Sun class="size-4" />
+					{:else}
+						<Moon class="size-4" />
+					{/if}
+				</Button>
 				{#if loggedIn}
 					<a href="/settings" class="text-sm text-muted-foreground hover:text-foreground">Il mio account</a>
 					<Button variant="ghost" size="sm" onclick={handleLogout}>Esci</Button>

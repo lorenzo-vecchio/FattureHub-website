@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Cloud, Search, Upload } from 'lucide-svelte';
+	import { mode } from 'mode-watcher';
+
+	const image = (base: string) => $derived(`/${base}-${mode.current}.png`);
 </script>
 
 <section class="border-b py-24">
@@ -14,11 +16,8 @@
 				<div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-bold">1</div>
 				<h3 class="mt-4 font-semibold">Carica le tue fatture</h3>
 				<p class="mt-2 text-sm text-muted-foreground">Trascina i file XML o P7M nell'app. Supportiamo import batch e ZIP.</p>
-				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center">
-					<div class="text-center p-4">
-						<Upload class="mx-auto size-6 text-muted-foreground/50" />
-						<p class="mt-1 text-xs text-muted-foreground/50">Screenshot: zona di upload con drag & drop attivo, file in fase di caricamento</p>
-					</div>
+				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+					<img src={image('how-upload')} alt="Upload fatture" class="size-full object-cover" />
 				</div>
 			</div>
 
@@ -26,11 +25,8 @@
 				<div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-bold">2</div>
 				<h3 class="mt-4 font-semibold">Analizza e filtra</h3>
 				<p class="mt-2 text-sm text-muted-foreground">Usa i filtri avanzati o l'AI per analizzare, riassumere e ottenere insight sulle tue fatture.</p>
-				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center">
-					<div class="text-center p-4">
-						<Search class="mx-auto size-6 text-muted-foreground/50" />
-						<p class="mt-1 text-xs text-muted-foreground/50">Screenshot: pannello dei filtri con risultati filtrati in tempo reale</p>
-					</div>
+				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+					<img src={image('how-filters')} alt="Analisi e filtri" class="size-full object-cover" />
 				</div>
 			</div>
 
@@ -38,11 +34,8 @@
 				<div class="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-bold">3</div>
 				<h3 class="mt-4 font-semibold">Esporta e sincronizza</h3>
 				<p class="mt-2 text-sm text-muted-foreground">Esporta in DOCX, salva i progetti nel cloud e sincronizza su tutti i tuoi dispositivi.</p>
-				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center">
-					<div class="text-center p-4">
-						<Cloud class="mx-auto size-6 text-muted-foreground/50" />
-						<p class="mt-1 text-xs text-muted-foreground/50">Screenshot: pannello progetti con lista dei progetti salvati e opzione di sincronizzazione</p>
-					</div>
+				<div class="mt-4 aspect-video rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+					<img src={image('AI-response')} alt="Esportazione e sync" class="size-full object-cover" />
 				</div>
 			</div>
 		</div>

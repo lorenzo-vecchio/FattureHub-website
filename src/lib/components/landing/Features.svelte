@@ -1,6 +1,10 @@
 <script lang="ts">
+	import { mode } from 'mode-watcher';
 	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Brain, Cloud, FileText, Search, Shield, Upload } from 'lucide-svelte';
+	import PrivacyAnimation from './PrivacyAnimation.svelte';
+	import SyncAnimation from './SyncAnimation.svelte';
+
+	const image = (base: string) => $derived(`/${base}-${mode.current}.png`);
 </script>
 
 <section id="features" class="border-b py-24">
@@ -12,11 +16,8 @@
 
 		<div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b">
-					<div class="text-center p-6">
-						<Upload class="mx-auto size-8 text-muted-foreground/50" />
-						<p class="mt-2 text-xs text-muted-foreground/50">Screenshot: schermata di upload delle fatture con drag & drop della zona di caricamento</p>
-					</div>
+				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+					<img src={image('how-upload')} alt="Schermata di upload fatture" class="size-full object-cover" />
 				</div>
 				<CardHeader>
 					<CardTitle>Importazione Veloce</CardTitle>
@@ -25,11 +26,8 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b">
-					<div class="text-center p-6">
-						<Search class="mx-auto size-8 text-muted-foreground/50" />
-						<p class="mt-2 text-xs text-muted-foreground/50">Screenshot: pannello dei filtri con data range, tipo documento, importo e ricerca testuale</p>
-					</div>
+				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+					<img src={image('how-filters')} alt="Pannello dei filtri" class="size-full object-cover" />
 				</div>
 				<CardHeader>
 					<CardTitle>Filtri Avanzati</CardTitle>
@@ -38,11 +36,8 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b">
-					<div class="text-center p-6">
-						<Brain class="mx-auto size-8 text-muted-foreground/50" />
-						<p class="mt-2 text-xs text-muted-foreground/50">Screenshot: interfaccia dell'assistente AI con conversazione e analisi delle fatture selezionate</p>
-					</div>
+				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+					<img src={image('AI-response')} alt="Interfaccia assistente AI" class="size-full object-cover" />
 				</div>
 				<CardHeader>
 					<CardTitle>Analisi AI</CardTitle>
@@ -51,11 +46,8 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b">
-					<div class="text-center p-6">
-						<FileText class="mx-auto size-8 text-muted-foreground/50" />
-						<p class="mt-2 text-xs text-muted-foreground/50">Screenshot: report generato dall'AI con tabelle riassuntive e grafici</p>
-					</div>
+				<div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
+					<img src={image('AI-thinking')} alt="Report generato dall'AI" class="size-full object-cover" />
 				</div>
 				<CardHeader>
 					<CardTitle>Report Automatici</CardTitle>
@@ -64,12 +56,7 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b">
-					<div class="text-center p-6">
-						<Cloud class="mx-auto size-8 text-muted-foreground/50" />
-						<p class="mt-2 text-xs text-muted-foreground/50">Illustrazione: sincronizzazione tra dispositivi con frecce che collegano computer, tablet e smartphone</p>
-					</div>
-				</div>
+				<SyncAnimation />
 				<CardHeader>
 					<CardTitle>Sync Multi-dispositivo</CardTitle>
 					<CardDescription>I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi.</CardDescription>
@@ -77,12 +64,7 @@
 			</Card>
 
 			<Card class="overflow-hidden">
-				<div class="aspect-video bg-muted flex items-center justify-center border-b">
-					<div class="text-center p-6">
-						<Shield class="mx-auto size-8 text-muted-foreground/50" />
-						<p class="mt-2 text-xs text-muted-foreground/50">Illustrazione: scudo con lucchetto che rappresenta la sicurezza e privacy dei dati</p>
-					</div>
-				</div>
+				<PrivacyAnimation />
 				<CardHeader>
 					<CardTitle>Privacy Prima</CardTitle>
 					<CardDescription>I tuoi dati rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
