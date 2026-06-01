@@ -12,6 +12,14 @@
 	}
 </script>
 
+{#snippet syncPreview()}
+	<SyncAnimationSimple />
+{/snippet}
+
+{#snippet lockPreview()}
+	<LottieAnimation />
+{/snippet}
+
 <section id="features" class="border-b py-24">
 	<div class="mx-auto max-w-7xl px-6">
 		<div class="mx-auto max-w-2xl text-center">
@@ -54,6 +62,7 @@
 					imageDark=""
 					title="Sync Multi-dispositivo"
 					description="I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi."
+					preview={syncPreview}
 				>
 					<SyncAnimationSimple />
 					<CardHeader>
@@ -69,6 +78,7 @@
 					imageDark=""
 					title="Privacy First"
 					description="I tuoi dati sono criptati e rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile."
+					preview={lockPreview}
 				>
 					<LottieAnimation />
 					<CardHeader>
