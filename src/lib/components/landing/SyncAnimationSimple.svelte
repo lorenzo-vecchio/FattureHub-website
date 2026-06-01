@@ -1,5 +1,11 @@
 <div class="aspect-video bg-muted flex items-center justify-center border-b overflow-hidden">
 	<svg viewBox="0 0 200 130" class="size-full p-3 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+		<!-- Background clouds -->
+		<g class="text-muted-foreground/10" stroke-width="3">
+			<path d="M30 105 a12 9 0 0 1 12 -9 a14 12 0 0 1 26 0 a10 7 0 0 1 10 7 a10 8 0 0 1 -10 8 H22 a12 9 0 0 1 -12 -9 a12 9 0 0 1 12 -9 a10 7 0 0 1 20 0" />
+			<path d="M150 20 a10 8 0 0 1 10 -8 a12 10 0 0 1 22 0 a8 6 0 0 1 8 6 a8 7 0 0 1 -8 7 H144 a10 8 0 0 1 -10 -8 a10 8 0 0 1 10 -8 a8 6 0 0 1 16 0" />
+		</g>
+
 		<!-- Server (center) -->
 		<g class="animate-pulse" style="animation-duration: 2.5s;">
 			<rect x="80" y="50" width="40" height="28" rx="4" class="text-primary" stroke-width="2" />
