@@ -74,36 +74,40 @@
 
 	<!-- Mobile menu sheet -->
 	<Sheet.Root bind:open={menuOpen}>
-		<Sheet.Content side="right" class="w-[300px]">
-			<Sheet.Header>
-				<Sheet.Title>Menu</Sheet.Title>
-				<Sheet.Description>Navigazione</Sheet.Description>
-			</Sheet.Header>
-			<div class="flex flex-col gap-4 px-4 py-6">
-				<a href="/#features" onclick={() => menuOpen = false} class="text-base font-medium text-foreground hover:text-primary">Funzionalità</a>
-				<a href="/#pricing" onclick={() => menuOpen = false} class="text-base font-medium text-foreground hover:text-primary">Prezzi</a>
-				<hr class="border-t" />
-				<button type="button" onclick={() => { toggleMode(); }} class="flex items-center gap-3 text-base text-foreground">
-					{#if mode.current === 'dark'}
-						<Sun class="size-4" />
-						Modalità chiara
+		<Sheet.Content side="top" class="h-dvh w-dvw border-0">
+			<Sheet.Close class="absolute top-4 right-4" />
+			<div class="flex flex-col items-center justify-center gap-6 h-full px-6 pb-16">
+				<div class="flex flex-col items-center gap-6">
+					<a href="/#features" onclick={() => menuOpen = false} class="text-xl font-medium text-foreground hover:text-primary">Funzionalità</a>
+					<a href="/#pricing" onclick={() => menuOpen = false} class="text-xl font-medium text-foreground hover:text-primary">Prezzi</a>
+				</div>
+
+				<div class="flex flex-col items-center gap-4 mt-auto">
+					<button type="button" onclick={() => { toggleMode(); }} class="flex items-center gap-3 text-base text-muted-foreground">
+						{#if mode.current === 'dark'}
+							<Sun class="size-4" />
+							Modalità chiara
+						{:else}
+							<Moon class="size-4" />
+							Modalità scura
+						{/if}
+					</button>
+					{#if loggedIn}
+						<div class="flex flex-col items-center gap-3">
+							<a href="/settings" onclick={() => menuOpen = false} class="text-base text-muted-foreground hover:text-foreground">Il mio account</a>
+							<Button variant="outline" onclick={handleLogout}>Esci</Button>
+						</div>
 					{:else}
-						<Moon class="size-4" />
-						Modalità scura
+						<div class="flex flex-col items-center gap-3">
+							<a href="/login" onclick={() => menuOpen = false}>
+								<Button variant="outline" class="w-40">Accedi</Button>
+							</a>
+							<a href="/register" onclick={() => menuOpen = false}>
+								<Button class="w-40">Registrati</Button>
+							</a>
+						</div>
 					{/if}
-				</button>
-				<hr class="border-t" />
-				{#if loggedIn}
-					<a href="/settings" onclick={() => menuOpen = false} class="text-base font-medium text-foreground hover:text-primary">Il mio account</a>
-					<Button variant="outline" onclick={handleLogout} class="w-full">Esci</Button>
-				{:else}
-					<a href="/login" onclick={() => menuOpen = false}>
-						<Button variant="outline" class="w-full">Accedi</Button>
-					</a>
-					<a href="/register" onclick={() => menuOpen = false}>
-						<Button class="w-full">Registrati</Button>
-					</a>
-				{/if}
+				</div>
 			</div>
 		</Sheet.Content>
 	</Sheet.Root>
