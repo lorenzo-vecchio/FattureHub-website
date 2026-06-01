@@ -27,9 +27,9 @@
 </script>
 
 <Dialog.Root bind:open={dialogOpen}>
-	<button type="button" onclick={() => dialogOpen = true} class="text-left w-full cursor-pointer max-sm:hidden">
+	<div role="button" tabindex="0" onclick={() => dialogOpen = true} onkeydown={(e) => e.key === 'Enter' && (dialogOpen = true)} class="max-sm:hidden">
 		{@render children?.()}
-	</button>
+	</div>
 	<Dialog.Content class="w-[90vw] max-sm:hidden">
 		<Dialog.Header>
 			<Dialog.Title>{title}</Dialog.Title>
@@ -46,9 +46,9 @@
 </Dialog.Root>
 
 <Drawer.Root bind:open={drawerOpen}>
-	<button type="button" onclick={() => drawerOpen = true} class="text-left w-full cursor-pointer sm:hidden">
+	<div role="button" tabindex="0" onclick={() => drawerOpen = true} onkeydown={(e) => e.key === 'Enter' && (drawerOpen = true)} class="sm:hidden">
 		{@render children?.()}
-	</button>
+	</div>
 	<Drawer.Content class="sm:hidden">
 		<Drawer.Header>
 			<Drawer.Title>{title}</Drawer.Title>
