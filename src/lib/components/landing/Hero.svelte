@@ -8,7 +8,7 @@
 	<div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"></div>
 	<div class="mx-auto max-w-7xl px-6 py-24">
 		<div class="mx-auto max-w-3xl text-center">
-			<Badge variant="outline" class="mb-4">Open Source · Privacy Prima</Badge>
+			<Badge variant="outline" class="mb-4">Open Source · Privacy First</Badge>
 			<h1 class="text-4xl font-bold tracking-tight sm:text-6xl">
 				Le tue fatture,
 				<span class="text-primary">più intelligenti</span>

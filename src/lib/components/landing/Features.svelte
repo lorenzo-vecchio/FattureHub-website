@@ -70,7 +70,7 @@
 			<Card class="overflow-hidden">
 				<LottieAnimation />
 				<CardHeader>
-					<CardTitle>Privacy Prima</CardTitle>
+					<CardTitle>Privacy First</CardTitle>
 					<CardDescription>I tuoi dati rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
 				</CardHeader>
 			</Card>
