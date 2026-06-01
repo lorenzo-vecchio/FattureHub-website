@@ -65,7 +65,7 @@
 					preview={syncPreview}
 				>
 					<SyncAnimationSimple />
-					<CardHeader>
+					<CardHeader class="pt-4">
 						<CardTitle>Sync Multi-dispositivo</CardTitle>
 						<CardDescription>I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi.</CardDescription>
 					</CardHeader>
@@ -81,7 +81,7 @@
 					preview={lockPreview}
 				>
 					<LottieAnimation />
-					<CardHeader>
+					<CardHeader class="pt-4">
 						<CardTitle>Privacy First</CardTitle>
 						<CardDescription>I tuoi dati sono criptati e rimangono tuoi. AI opzionale con la tua chiave API. Open source e auto-hostabile.</CardDescription>
 					</CardHeader>

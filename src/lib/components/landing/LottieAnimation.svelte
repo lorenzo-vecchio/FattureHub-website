@@ -9,7 +9,7 @@
 	});
 </script>
 
-<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
+<div class="aspect-video bg-card flex items-center justify-center overflow-hidden">
 	<div class="size-full">
 		<DotLottieSvelte
 			src={lottieFiles['/src/assets/shield.lottie'] ?? ''}

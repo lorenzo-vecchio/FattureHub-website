@@ -22,12 +22,12 @@
 		{#if children}
 			{@render children()}
 		{:else}
-			<div class="aspect-video bg-card flex items-center justify-center border-b overflow-hidden">
+			<div class="aspect-video bg-card flex items-center justify-center overflow-hidden">
 				<img src={imageLight} alt={title} class="size-full object-contain dark:hidden" />
 				<img src={imageDark} alt={title} class="size-full object-contain hidden dark:block" />
 			</div>
 		{/if}
-		<CardHeader>
+		<CardHeader class="pt-4">
 			<CardTitle>{title}</CardTitle>
 			<CardDescription>{description}</CardDescription>
 		</CardHeader>
