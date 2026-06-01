@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { mode } from 'mode-watcher';
 
-	const image = (base: string) => $derived(`/${base}-${mode.current}.png`);
+	function image(base: string) {
+		return `/${base}-${mode.current}.png`;
+	}
 </script>
 
 <section class="border-b py-24">

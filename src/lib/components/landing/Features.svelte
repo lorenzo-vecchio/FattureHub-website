@@ -4,7 +4,9 @@
 	import PrivacyAnimation from './PrivacyAnimation.svelte';
 	import SyncAnimation from './SyncAnimation.svelte';
 
-	const image = (base: string) => $derived(`/${base}-${mode.current}.png`);
+	function image(base: string) {
+		return `/${base}-${mode.current}.png`;
+	}
 </script>
 
 <section id="features" class="border-b py-24">
