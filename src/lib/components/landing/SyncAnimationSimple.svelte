@@ -3,14 +3,14 @@
 		<!-- Server (center) -->
 		<g class="animate-pulse" style="animation-duration: 2.5s;">
 			<rect x="80" y="50" width="40" height="28" rx="4" class="text-primary" stroke-width="2" />
-			<rect x="84" y="56" width="8" height="3" rx="1" class="text-primary/60" />
-			<rect x="94" y="56" width="8" height="3" rx="1" class="text-primary/60" />
+			<rect x="88" y="56" width="8" height="3" rx="1" class="text-primary/60" />
+			<rect x="96" y="56" width="8" height="3" rx="1" class="text-primary/60" />
 			<rect x="104" y="56" width="8" height="3" rx="1" class="text-primary/60" />
-			<rect x="84" y="63" width="8" height="3" rx="1" class="text-primary/60" />
-			<rect x="94" y="63" width="8" height="3" rx="1" class="text-primary/60" />
+			<rect x="88" y="63" width="8" height="3" rx="1" class="text-primary/60" />
+			<rect x="96" y="63" width="8" height="3" rx="1" class="text-primary/60" />
 			<rect x="104" y="63" width="8" height="3" rx="1" class="text-primary/60" />
-			<rect x="84" y="70" width="8" height="3" rx="1" class="text-primary/60" />
-			<rect x="94" y="70" width="8" height="3" rx="1" class="text-primary/60" />
+			<rect x="88" y="70" width="8" height="3" rx="1" class="text-primary/60" />
+			<rect x="96" y="70" width="8" height="3" rx="1" class="text-primary/60" />
 			<rect x="104" y="70" width="8" height="3" rx="1" class="text-primary/60" />
 		</g>
 
