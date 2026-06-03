@@ -30,7 +30,7 @@
 					<div class="flex items-center gap-2 text-sm text-muted-foreground/50"><Cloud class="size-4" /> Sync cloud non disponibile</div>
 				</CardContent>
 				<CardFooter>
-					<a href="https://github.com/lorenzo-vecchio/filtra-fatture" class="w-full">
+					<a href="/download" class="w-full">
 						<Button variant="outline" class="w-full">Scarica App</Button>
 					</a>
 				</CardFooter>

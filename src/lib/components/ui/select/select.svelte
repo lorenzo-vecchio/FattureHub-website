@@ -4,8 +4,9 @@
 	let {
 		open = $bindable(false),
 		value = $bindable(),
+		type = "single",
 		...restProps
-	}: SelectPrimitive.RootProps = $props();
+	}: SelectPrimitive.RootProps & { type?: "single" | "multiple" } = $props();
 </script>
 
-<SelectPrimitive.Root bind:open bind:value={value as never} {...restProps} />
+<SelectPrimitive.Root bind:open bind:value={value as never} {type} {...restProps} />

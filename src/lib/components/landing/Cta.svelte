@@ -15,7 +15,7 @@
 						<ArrowRight class="size-4" />
 					</Button>
 				</a>
-				<a href="https://github.com/lorenzo-vecchio/filtra-fatture" target="_blank" rel="noopener">
+				<a href="/download">
 					<Button variant="outline" size="lg">
 						<Download class="mr-2 size-4" />
 						Scarica App
