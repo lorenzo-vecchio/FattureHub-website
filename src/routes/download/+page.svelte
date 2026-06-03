@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 	import type { Release } from '$lib/components/download/types.js';
-	import { osConfigs, detectOS, detectOSAsync, matchAsset, getPrimaryAsset, getAltAssets } from '$lib/components/download/types.js';
+	import { osConfigs, detectOS, matchAsset, getPrimaryAsset, getAltAssets } from '$lib/components/download/types.js';
 	import Hero from '$lib/components/download/hero.svelte';
 	import VersionSelect from '$lib/components/download/version-select.svelte';
 	import OSSelect from '$lib/components/download/os-select.svelte';
@@ -20,9 +20,13 @@
 		if (latest) selectedVersion = latest;
 	});
 
-	$effect(() => {
-		if (!browser) return;
-		detectOSAsync(true).then(os => { selectedOS = os; });
+	onMount(() => {
+		selectedOS = detectOS(true);
+		const uaData = (navigator as any).userAgentData;
+		if (!uaData?.getHighEntropyValues) return;
+		uaData.getHighEntropyValues(['architecture']).then((data: any) => {
+			if (data.architecture === 'arm') selectedOS = 'macos-arm64';
+		});
 	});
 
 	const currentRelease = $derived(

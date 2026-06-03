@@ -40,11 +40,27 @@ export function detectOS(browser: boolean): string {
 	if (!browser) return 'macos-arm64';
 	const ua = navigator.userAgent;
 	if (/mac|darwin/i.test(ua)) {
-		return /arm|aarch64/i.test(ua) ? 'macos-arm64' : 'macos-x64';
+		if (/arm|aarch64/i.test(ua)) return 'macos-arm64';
+		return detectMacByGPU() || 'macos-x64';
 	}
 	if (/win/i.test(ua)) return 'windows';
 	if (/linux/i.test(ua)) return detectLinuxDistro();
 	return 'macos-arm64';
+}
+
+function detectMacByGPU(): string | null {
+	try {
+		const canvas = document.createElement('canvas');
+		const gl: WebGLRenderingContext | null = canvas.getContext('webgl') as WebGLRenderingContext | null;
+		if (gl) {
+			const ext = gl.getExtension('WEBGL_debug_renderer_info');
+			if (ext) {
+				const renderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+				if (/Apple (M\d|GPU)/i.test(renderer)) return 'macos-arm64';
+			}
+		}
+	} catch {}
+	return null;
 }
 
 function detectLinuxDistro(): string {
@@ -52,26 +68,6 @@ function detectLinuxDistro(): string {
 	if (/ubuntu|debian|mint|pop!/i.test(ua)) return 'linux-deb';
 	if (/fedora|rhel|centos|suse/i.test(ua)) return 'linux-rpm';
 	return 'linux-deb';
-}
-
-export async function detectOSAsync(browser: boolean): Promise<string> {
-	if (!browser) return 'macos-arm64';
-	const ua = navigator.userAgent;
-	if (/win/i.test(ua)) return 'windows';
-	if (/linux/i.test(ua)) return detectLinuxDistro();
-	if (!/mac|darwin/i.test(ua)) return 'macos-arm64';
-
-	if (/arm|aarch64/i.test(ua)) return 'macos-arm64';
-
-	try {
-		const uaData = (navigator as any).userAgentData;
-		if (uaData?.getHighEntropyValues) {
-			const data = await uaData.getHighEntropyValues(['architecture']);
-			if (data.architecture === 'arm') return 'macos-arm64';
-		}
-	} catch {}
-
-	return 'macos-x64';
 }
 
 export function matchAsset(name: string, osId: string): boolean {
