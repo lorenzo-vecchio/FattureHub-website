@@ -22,7 +22,7 @@
 						<span class="text-3xl font-bold">Gratis</span>
 					</p>
 				</CardHeader>
-				<CardContent class="space-y-3">
+				<CardContent class="grow space-y-3">
 					<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
 					<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
 					<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>
@@ -46,7 +46,7 @@
 						<span class="text-muted-foreground">/mese</span>
 					</p>
 				</CardHeader>
-				<CardContent class="space-y-3">
+				<CardContent class="grow space-y-3">
 					<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
 					<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
 					<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>
@@ -61,32 +61,34 @@
 			</Card>
 
 			<!-- Pro -->
-			<Card class="relative border-primary shadow-lg">
-				<div class="absolute -top-3 left-1/2 -translate-x-1/2">
+			<div class="relative">
+				<div class="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
 					<Badge>Più Popolare</Badge>
 				</div>
-				<CardHeader>
-					<CardTitle>Pro</CardTitle>
-					<CardDescription>Per professionisti</CardDescription>
-					<p class="mt-4">
-						<span class="text-3xl font-bold">€10</span>
-						<span class="text-muted-foreground">/mese</span>
-					</p>
-				</CardHeader>
-				<CardContent class="space-y-3">
-					<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
-					<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
-					<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>
-					<div class="flex items-center gap-2 text-sm"><Brain class="size-4 text-primary" /> 15 crediti AI/mese inclusi</div>
-					<div class="flex items-center gap-2 text-sm"><Cloud class="size-4 text-primary" /> Sync cloud illimitato</div>
-					<div class="flex items-center gap-2 text-sm"><Shield class="size-4 text-primary" /> Backup file su cloud</div>
-				</CardContent>
-				<CardFooter>
-					<a href="/register" class="w-full">
-						<Button class="w-full">Inizia Prova Gratuita</Button>
-					</a>
-				</CardFooter>
-			</Card>
+				<Card class="border-primary shadow-lg">
+					<CardHeader>
+						<CardTitle>Pro</CardTitle>
+						<CardDescription>Per professionisti</CardDescription>
+						<p class="mt-4">
+							<span class="text-3xl font-bold">€10</span>
+							<span class="text-muted-foreground">/mese</span>
+						</p>
+					</CardHeader>
+					<CardContent class="grow space-y-3">
+						<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
+						<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
+						<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>
+						<div class="flex items-center gap-2 text-sm"><Brain class="size-4 text-primary" /> 15 crediti AI/mese inclusi</div>
+						<div class="flex items-center gap-2 text-sm"><Cloud class="size-4 text-primary" /> Sync cloud illimitato</div>
+						<div class="flex items-center gap-2 text-sm"><Shield class="size-4 text-primary" /> Backup file su cloud</div>
+					</CardContent>
+					<CardFooter>
+						<a href="/register" class="w-full">
+							<Button class="w-full">Inizia Prova Gratuita</Button>
+						</a>
+					</CardFooter>
+				</Card>
+			</div>
 
 			<!-- Business -->
 			<Card>
@@ -98,7 +100,7 @@
 						<span class="text-muted-foreground">/mese</span>
 					</p>
 				</CardHeader>
-				<CardContent class="space-y-3">
+				<CardContent class="grow space-y-3">
 					<div class="flex items-center gap-2 text-sm"><FileText class="size-4 text-primary" /> App desktop completa</div>
 					<div class="flex items-center gap-2 text-sm"><Search class="size-4 text-primary" /> Filtri avanzati</div>
 					<div class="flex items-center gap-2 text-sm"><Download class="size-4 text-primary" /> Esportazione DOCX</div>

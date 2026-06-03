@@ -34,7 +34,7 @@
 								</p>
 							{/if}
 						</CardHeader>
-						<CardContent class="pb-3">
+						<CardContent class="grow pb-3">
 							<p class="text-sm text-muted-foreground">{plan.monthly_credits} crediti AI/mese</p>
 							{#if plan.file_backup}
 								<p class="mt-1 text-xs text-muted-foreground">✓ Backup file incluso</p>
