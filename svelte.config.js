@@ -2,9 +2,7 @@ import adapter from '@sveltejs/adapter-static';
 
 const config = {
 	kit: {
-		adapter: adapter({
-			fallback: 'index.html'
-		})
+		adapter: adapter()
 	},
 	vitePlugin: {
 		dynamicCompileOptions: ({ filename }) =>

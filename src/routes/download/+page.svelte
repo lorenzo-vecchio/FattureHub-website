@@ -94,8 +94,14 @@
 </script>
 
 <svelte:head>
-	<title>Scarica - FattureHub</title>
-	<meta name="description" content="Scarica l'ultima versione di FattureHub per il tuo sistema operativo." />
+	<title>Scarica FattureHub - App desktop gratuita per fatture elettroniche</title>
+	<meta name="description" content="Scarica l'ultima versione di FattureHub per il tuo sistema operativo. Disponibile per macOS (Apple Silicon e Intel), Windows e Linux (DEB, AppImage, RPM)." />
+	<meta name="keywords" content="download fatturehub, scarica fatturehub, fatture app desktop, fattura elettronica software, macOS, Windows, Linux" />
+	<meta property="og:title" content="Scarica FattureHub - App desktop per fatture elettroniche" />
+	<meta property="og:description" content="Scarica l'ultima versione di FattureHub per macOS, Windows o Linux. Gratuito e open source." />
+	<meta property="og:url" content="https://fatturehub.lorenzovecchio.dev/download" />
+	<meta name="twitter:title" content="Scarica FattureHub - App desktop per fatture elettroniche" />
+	<meta name="twitter:description" content="Scarica l'ultima versione di FattureHub per macOS, Windows o Linux. Gratuito e open source." />
 </svelte:head>
 
 <div class="mx-auto max-w-7xl px-6 py-24">
@@ -103,7 +109,7 @@
 		<Hero />
 
 		{#if loadError}
-			<div class="rounded-lg bg-destructive/10 p-4 text-center text-sm text-destructive">
+			<div class="rounded-lg bg-destructive/10 p-4 text-center text-sm text-destructive" role="alert">
 				{loadError}
 			</div>
 		{:else if releases.length === 0}
