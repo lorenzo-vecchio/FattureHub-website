@@ -35,7 +35,7 @@
 			<HowItWorksCard
 				step={3}
 				title="Esporta e sincronizza"
-				description="Esporta in DOCX, salva i progetti nel cloud e sincronizza su tutti i tuoi dispositivi."
+				description="Esporta in DOCX e salva i progetti per ritrovarli in seguito."
 				imageLight={imgSrc('AI-response', 'light')}
 				imageDark={imgSrc('AI-response', 'dark')}
 			/>

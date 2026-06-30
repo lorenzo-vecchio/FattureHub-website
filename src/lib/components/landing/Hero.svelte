@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import { ArrowRight, Download } from 'lucide-svelte';
+	import { Download } from 'lucide-svelte';
 </script>
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden border-b">
@@ -27,18 +27,21 @@
 				<span class="text-primary">più intelligenti</span>
 			</h1>
 			<p class="mt-6 text-lg leading-8 text-muted-foreground">
-				Carica le tue fatture XML/P7M, filtralle, analizzale con l'AI e sincronizzale su tutti i tuoi dispositivi.
-				Usa la tua chiave API o quella del nostro backend.
+				Carica le tue fatture XML/P7M, filtralle e analizzale con l'AI — usando la tua chiave API preferita (OpenAI, Claude, DeepSeek...) o in locale con <strong>Ollama</strong> (presto disponibile). Interfaccia disponibile in tema chiaro e scuro.
 			</p>
+
+			<div class="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm text-muted-foreground">
+				<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5">macOS (Apple Silicon)</span>
+				<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5">macOS (Intel)</span>
+				<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5">Windows</span>
+				<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5">Linux (DEB)</span>
+				<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5">Linux (AppImage)</span>
+				<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5">Linux (RPM)</span>
+			</div>
+
 			<div class="mt-10 flex items-center justify-center gap-4">
-				<a href="/register">
-					<Button size="lg" class="gap-2">
-						Inizia Gratuitamente
-						<ArrowRight class="size-4" />
-					</Button>
-				</a>
 				<a href="/download">
-					<Button variant="outline" size="lg">
+					<Button size="lg" class="gap-2">
 						<Download class="mr-2 size-4" />
 						Scarica l'App
 					</Button>

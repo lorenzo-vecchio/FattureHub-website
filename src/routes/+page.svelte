@@ -2,7 +2,6 @@
 	import Hero from '$lib/components/landing/Hero.svelte';
 	import Features from '$lib/components/landing/Features.svelte';
 	import HowItWorks from '$lib/components/landing/HowItWorks.svelte';
-	import Pricing from '$lib/components/landing/Pricing.svelte';
 	import Cta from '$lib/components/landing/Cta.svelte';
 </script>
 
@@ -14,5 +13,4 @@
 <Hero />
 <Features />
 <HowItWorks />
-<Pricing />
 <Cta />

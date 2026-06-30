@@ -7,11 +7,12 @@
 	import OSSelect from '$lib/components/download/os-select.svelte';
 	import DownloadCard from '$lib/components/download/download-card.svelte';
 
-	let { data } = $props();
+	const GITHUB_OWNER = 'lorenzo-vecchio';
+	const GITHUB_REPO = 'FattureHub';
 
-	let releases: Release[] = $derived(data.releases ?? []);
-	let latest = $derived(data.latest ?? '');
-	let loadError = $derived(data.error ?? '');
+	let releases = $state<Release[]>([]);
+	let latest = $state('');
+	let loadError = $state('');
 
 	let selectedVersion = $state('');
 	let selectedOS = $state('');
@@ -20,14 +21,51 @@
 		if (latest) selectedVersion = latest;
 	});
 
-	onMount(() => {
+	onMount(async () => {
 		selectedOS = detectOS(true);
 		const uaData = (navigator as any).userAgentData;
-		if (!uaData?.getHighEntropyValues) return;
-		uaData.getHighEntropyValues(['architecture']).then((data: any) => {
-			if (data.architecture === 'arm') selectedOS = 'macos-arm64';
-		});
+		if (uaData?.getHighEntropyValues) {
+			uaData.getHighEntropyValues(['architecture']).then((data: any) => {
+				if (data.architecture === 'arm') selectedOS = 'macos-arm64';
+			});
+		}
+
+		await fetchReleases();
 	});
+
+	async function fetchReleases() {
+		try {
+			const [latestRes, allRes] = await Promise.all([
+				fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases/latest`),
+				fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases?per_page=50`)
+			]);
+
+			if (!latestRes.ok || !allRes.ok) {
+				loadError = 'Impossibile contattare GitHub.';
+				return;
+			}
+
+			const latestData: { tag_name: string } = await latestRes.json();
+			const all: any[] = await allRes.json();
+
+			releases = all
+				.filter(r => !r.prerelease && r.assets.length > 0)
+				.map(r => ({
+					tag_name: r.tag_name,
+					name: r.name,
+					published_at: r.published_at,
+					assets: r.assets.map((a: any) => ({
+						name: a.name,
+						browser_download_url: a.browser_download_url,
+						size: a.size
+					}))
+				}));
+
+			latest = latestData.tag_name;
+		} catch {
+			loadError = 'Errore di rete.';
+		}
+	}
 
 	const currentRelease = $derived(
 		releases.find(r => r.tag_name === selectedVersion) ?? null
@@ -70,7 +108,7 @@
 			</div>
 		{:else if releases.length === 0}
 			<div class="rounded-lg bg-muted p-8 text-center">
-				<p class="text-sm text-muted-foreground">Nessuna versione disponibile.</p>
+				<p class="text-sm text-muted-foreground">Caricamento versioni...</p>
 			</div>
 		{:else}
 			<div class="space-y-6">

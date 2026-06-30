@@ -1,36 +1,11 @@
 <script lang="ts">
 	import { ModeWatcher, toggleMode, mode } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button';
-	import { isLoggedIn, logout as authLogout, getUser, tryRefreshAuth } from '$lib/auth';
-	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
 	import { Sun, Moon, Menu } from 'lucide-svelte';
 
 	let { children } = $props();
 
-	let loggedIn = $state(false);
 	let menuOpen = $state(false);
-
-	onMount(() => {
-		initAuth();
-		window.addEventListener('authchange', updateAuth);
-		return () => window.removeEventListener('authchange', updateAuth);
-	});
-
-	async function initAuth() {
-		await tryRefreshAuth();
-		updateAuth();
-	}
-
-	function updateAuth() {
-		loggedIn = isLoggedIn();
-	}
-
-	function handleLogout() {
-		authLogout();
-		menuOpen = false;
-		goto('/');
-	}
 </script>
 
 <ModeWatcher />
@@ -43,7 +18,6 @@
 			<!-- Desktop nav -->
 			<nav class="hidden sm:flex items-center gap-4">
 				<a href="/#features" class="text-sm text-muted-foreground hover:text-foreground">Funzionalità</a>
-				<a href="/#pricing" class="text-sm text-muted-foreground hover:text-foreground">Prezzi</a>
 				<Button variant="ghost" size="icon-sm" onclick={toggleMode} class="text-muted-foreground">
 					{#if mode.current === 'dark'}
 						<Sun class="size-4" />
@@ -51,17 +25,9 @@
 						<Moon class="size-4" />
 					{/if}
 				</Button>
-				{#if loggedIn}
-					<a href="/settings" class="text-sm text-muted-foreground hover:text-foreground">Il mio account</a>
-					<Button variant="ghost" size="sm" onclick={handleLogout}>Esci</Button>
-				{:else}
-					<a href="/login">
-						<Button variant="ghost" size="sm">Accedi</Button>
-					</a>
-					<a href="/register">
-						<Button size="sm">Registrati</Button>
-					</a>
-				{/if}
+				<a href="/download">
+					<Button size="sm">Scarica App</Button>
+				</a>
 			</nav>
 
 			<!-- Mobile hamburger -->
@@ -80,7 +46,6 @@
 
 			<div class="flex flex-col items-center gap-8">
 				<a href="/#features" onclick={() => menuOpen = false} class="text-2xl font-medium text-foreground hover:text-primary">Funzionalità</a>
-				<a href="/#pricing" onclick={() => menuOpen = false} class="text-2xl font-medium text-foreground hover:text-primary">Prezzi</a>
 			</div>
 
 			<div class="flex flex-col items-center gap-4 absolute bottom-12">
@@ -93,17 +58,9 @@
 						Modalità scura
 					{/if}
 				</button>
-				{#if loggedIn}
-					<a href="/settings" onclick={() => menuOpen = false} class="text-base text-muted-foreground hover:text-foreground">Il mio account</a>
-					<Button variant="outline" onclick={handleLogout}>Esci</Button>
-				{:else}
-					<a href="/login" onclick={() => menuOpen = false}>
-						<Button variant="outline" class="w-40">Accedi</Button>
-					</a>
-					<a href="/register" onclick={() => menuOpen = false}>
-						<Button class="w-40">Registrati</Button>
-					</a>
-				{/if}
+				<a href="/download" onclick={() => menuOpen = false}>
+					<Button class="w-40">Scarica App</Button>
+				</a>
 			</div>
 		</div>
 	{/if}

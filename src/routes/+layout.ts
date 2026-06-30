@@ -1,3 +1,3 @@
 import './layout.css';
 
-export const ssr = true;
+export const ssr = false;
