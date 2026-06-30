@@ -25,7 +25,7 @@
 </script>
 
 <Dialog.Root bind:open>
-	<div role="button" tabindex="0" onclick={() => open = true} onkeydown={(e) => e.key === 'Enter' && (open = true)}>
+	<div role="button" tabindex="0" onclick={() => open = true} onkeydown={(e) => e.key === 'Enter' && (open = true)} class="flex flex-col h-full">
 		{@render children?.()}
 	</div>
 	<Dialog.Content class="w-[90vw]">
