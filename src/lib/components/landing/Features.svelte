@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Card, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import LottieAnimation from './LottieAnimation.svelte';
-	import SyncAnimationSimple from './SyncAnimationSimple.svelte';
+	import ProjectsAnimationSimple from './ProjectsAnimationSimple.svelte';
 	import FeatureCard from './FeatureCard.svelte';
 	import ImagePreview from './ImagePreview.svelte';
 
@@ -12,8 +12,8 @@
 	}
 </script>
 
-{#snippet syncPreview()}
-	<SyncAnimationSimple />
+{#snippet projectsPreview()}
+	<ProjectsAnimationSimple />
 {/snippet}
 
 {#snippet lockPreview()}
@@ -60,14 +60,14 @@
 				<ImagePreview
 					imageLight=""
 					imageDark=""
-					title="Sync Multi-dispositivo"
-					description="I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi."
-					preview={syncPreview}
+					title="Gestione Progetti"
+					description="Salva e riapri le tue sessioni di lavoro con un click. Progetti, filtri e fatture sempre a portata di mano."
+					preview={projectsPreview}
 				>
-					<SyncAnimationSimple />
+					<ProjectsAnimationSimple />
 					<CardHeader class="pt-4">
-						<CardTitle>Sync Multi-dispositivo</CardTitle>
-						<CardDescription>I tuoi progetti e le tue fatture sincronizzati su tutti i dispositivi. Lavora dove vuoi, quando vuoi.</CardDescription>
+						<CardTitle>Gestione Progetti</CardTitle>
+						<CardDescription>Salva e riapri le tue sessioni di lavoro con un click. Progetti, filtri e fatture sempre a portata di mano.</CardDescription>
 					</CardHeader>
 				</ImagePreview>
 			</Card>
