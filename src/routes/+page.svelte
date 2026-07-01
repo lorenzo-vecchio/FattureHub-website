@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>FattureHub - App desktop per analisi fatture elettroniche con AI</title>
+	<title>FattureHub</title>
 	<meta name="description" content="Gestisci, filtra e analizza le tue fatture FatturaPA con l'aiuto dell'intelligenza artificiale. App desktop open source per macOS, Windows e Linux. Tema chiaro e scuro, nessun dato inviato a server esterni." />
 	<meta name="keywords" content="fatture, fattura elettronica, fatturaPA, XML, P7M, AI, analisi fatture, open source, desktop, macOS, Windows, Linux" />
 	<meta property="og:title" content="FattureHub - Analisi fatture elettroniche con AI" />
