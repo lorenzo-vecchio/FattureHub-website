@@ -3,17 +3,14 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Apple, Monitor, Terminal } from 'lucide-svelte';
 	import PrimaryDownload from './primary-download.svelte';
-	import AlternativeFormats from './alternative-formats.svelte';
 
 	let {
 		release,
 		primaryAsset,
-		altAssets,
 		osId = '',
 	}: {
 		release: Release;
 		primaryAsset: Asset;
-		altAssets: Asset[];
 		osId: string;
 	} = $props();
 </script>
@@ -36,6 +33,5 @@
 				publishedAt={release.published_at}
 			/>
 		</div>
-		<AlternativeFormats assets={altAssets} />
 	</Card.Content>
 </Card.Root>

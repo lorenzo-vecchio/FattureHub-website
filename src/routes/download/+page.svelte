@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Release } from '$lib/components/download/types.js';
-	import { osConfigs, detectOS, matchAsset, getPrimaryAsset, getAltAssets } from '$lib/components/download/types.js';
+	import { osConfigs, detectOS, matchAsset, getPrimaryAsset } from '$lib/components/download/types.js';
 	import Hero from '$lib/components/download/hero.svelte';
 	import VersionSelect from '$lib/components/download/version-select.svelte';
 	import OSSelect from '$lib/components/download/os-select.svelte';
@@ -87,10 +87,6 @@
 	const primaryAsset = $derived(
 		currentRelease ? getPrimaryAsset(currentRelease.assets, selectedOS) : null
 	);
-
-	const altAssets = $derived(
-		currentRelease ? getAltAssets(currentRelease.assets, selectedOS) : []
-	);
 </script>
 
 <svelte:head>
@@ -127,7 +123,6 @@
 					<DownloadCard
 						release={currentRelease}
 						primaryAsset={primaryAsset}
-						altAssets={altAssets}
 						osId={selectedOS}
 					/>
 				{:else if currentRelease && !primaryAsset}

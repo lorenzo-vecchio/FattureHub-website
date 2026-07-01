@@ -31,7 +31,7 @@
 		<a href={asset.browser_download_url}>
 			<Button>
 				<Download class="mr-2 size-4" />
-				Scarica {asset.name}
+				Scarica
 			</Button>
 		</a>
 	</div>

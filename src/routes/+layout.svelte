@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ModeWatcher, toggleMode, mode } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button';
-	import { Sun, Moon, Menu } from 'lucide-svelte';
+	import { Sun, Moon, Menu, Github, Download, Mail } from 'lucide-svelte';
 
 	let { children } = $props();
 
@@ -58,8 +58,11 @@
 			<a href="/" class="text-lg font-bold tracking-tight" aria-label="FattureHub home">FattureHub</a>
 
 			<!-- Desktop nav -->
-			<nav class="hidden sm:flex items-center gap-4" aria-label="Navigazione principale">
-				<a href="/#features" class="text-sm text-muted-foreground hover:text-foreground">Funzionalità</a>
+			<nav class="hidden sm:flex items-center gap-1" aria-label="Navigazione principale">
+				<a href="/#features" class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">Funzionalità</a>
+				<a href="/#how-it-works" class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">Come funziona</a>
+				<a href="/download" class="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">Download</a>
+				<div class="mx-2 h-5 w-px bg-border"></div>
 				<Button variant="ghost" size="icon-sm" onclick={toggleMode} class="text-muted-foreground" aria-label={mode.current === 'dark' ? 'Attiva tema chiaro' : 'Attiva tema scuro'}>
 					{#if mode.current === 'dark'}
 						<Sun class="size-4" />
@@ -67,8 +70,16 @@
 						<Moon class="size-4" />
 					{/if}
 				</Button>
+				<a href="https://github.com/lorenzo-vecchio/FattureHub" rel="external" target="_blank">
+					<Button variant="ghost" size="icon-sm" class="text-muted-foreground" aria-label="Vedi su GitHub">
+						<Github class="size-4" />
+					</Button>
+				</a>
 				<a href="/download">
-					<Button size="sm">Scarica App</Button>
+					<Button size="sm" class="ml-2 gap-1.5">
+						<Download class="size-3.5" />
+						Scarica App
+					</Button>
 				</a>
 			</nav>
 
@@ -88,6 +99,8 @@
 
 			<nav class="flex flex-col items-center gap-8" aria-label="Navigazione mobile">
 				<a href="/#features" onclick={() => menuOpen = false} class="text-2xl font-medium text-foreground hover:text-primary">Funzionalità</a>
+				<a href="/#how-it-works" onclick={() => menuOpen = false} class="text-2xl font-medium text-foreground hover:text-primary">Come funziona</a>
+				<a href="/download" onclick={() => menuOpen = false} class="text-2xl font-medium text-foreground hover:text-primary">Download</a>
 			</nav>
 
 			<div class="flex flex-col items-center gap-4 absolute bottom-12">
@@ -101,7 +114,10 @@
 					{/if}
 				</button>
 				<a href="/download" onclick={() => menuOpen = false}>
-					<Button class="w-40">Scarica App</Button>
+					<Button class="w-40 gap-1.5">
+						<Download class="size-3.5" />
+						Scarica App
+					</Button>
 				</a>
 			</div>
 		</div>
@@ -112,14 +128,46 @@
 	</main>
 
 	<footer class="border-t">
-		<div class="mx-auto max-w-7xl px-6 py-8">
-			<div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-				<p class="text-sm text-muted-foreground">© 2025 FattureHub. Tutti i diritti riservati.</p>
-				<div class="flex gap-6">
-					<a href="https://github.com/lorenzo-vecchio/FattureHub" class="text-sm text-muted-foreground hover:text-foreground" rel="external">GitHub</a>
-					<a href="mailto:info@fatturehub.com" class="text-sm text-muted-foreground hover:text-foreground">Contatti</a>
-					<a href="/privacy" class="text-sm text-muted-foreground hover:text-foreground">Privacy</a>
+		<div class="mx-auto max-w-7xl px-6 py-12 pb-16">
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+				<div>
+					<h3 class="text-sm font-semibold mb-3">FattureHub</h3>
+					<p class="text-sm text-muted-foreground leading-relaxed">
+						App desktop open source per gestire, filtrare e analizzare fatture elettroniche FatturaPA con l'aiuto dell'AI.
+					</p>
 				</div>
+				<div>
+					<h3 class="text-sm font-semibold mb-3">Link</h3>
+					<ul class="space-y-2 text-sm text-muted-foreground">
+						<li><a href="/#features" class="hover:text-foreground transition-colors">Funzionalità</a></li>
+						<li><a href="/#how-it-works" class="hover:text-foreground transition-colors">Come funziona</a></li>
+						<li><a href="/download" class="hover:text-foreground transition-colors">Download</a></li>
+						<li><a href="/privacy" class="hover:text-foreground transition-colors">Privacy</a></li>
+					</ul>
+				</div>
+				<div>
+					<h3 class="text-sm font-semibold mb-3">Contatti</h3>
+					<ul class="space-y-2 text-sm text-muted-foreground">
+						<li>
+							<a href="https://github.com/lorenzo-vecchio/FattureHub" rel="external" target="_blank" class="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+								<Github class="size-3.5" /> GitHub
+							</a>
+						</li>
+						<li>
+							<a href="mailto:contact@lorenzovecchio.dev" class="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+								<Mail class="size-3.5" /> contact@lorenzovecchio.dev
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="border-t">
+			<div class="mx-auto max-w-7xl px-6 py-6">
+				<p class="text-sm text-muted-foreground text-center">© 2025 FattureHub. Open source (MIT).</p>
+				<p class="mt-3 text-xs text-muted-foreground/70 text-center">
+					Made with ❤️ by <a href="http://lorenzovecchio.dev" rel="external" target="_blank" class="underline underline-offset-2 hover:text-foreground transition-colors">Lorenzo Vecchio</a>
+				</p>
 			</div>
 		</div>
 	</footer>
