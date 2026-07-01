@@ -65,7 +65,7 @@
 			<h2 class="text-lg font-semibold text-foreground">6. Contatti</h2>
 			<p class="mt-2">
 				Per qualsiasi domanda relativa a questa privacy policy, puoi contattarmi all'indirizzo email:
-				<a href="mailto:info@fatturehub.com" class="text-primary hover:underline">info@fatturehub.com</a>.
+				<a href="mailto:contact@lorenzovecchio.dev" class="text-primary hover:underline">contact@lorenzovecchio.dev</a>.
 			</p>
 		</section>
 	</div>
